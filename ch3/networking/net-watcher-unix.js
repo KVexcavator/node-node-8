@@ -18,8 +18,8 @@ net.createServer(connection => {
     console.log('Subscriber disconnected.')
     watcher.close()
   })
-}).listen(60300, () => console.log('Listening for subscribers...'))
+}).listen('/tmp/watcher.sock', () => console.log('Listening for subscribers...'))
 // need three terminal sessions:
 // watch -n 1 touch target.txt
-// node net-watcher.js target.txt
-// nc localhost 60300
+// node net-watcher-unix.js target.txt
+// nc -U /tmp/watcher.sock
